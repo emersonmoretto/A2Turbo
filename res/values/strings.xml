@@ -22,7 +22,7 @@
     <!-- Options Menu -->
     <string name="connect">Connect device</string>
     <string name="disconnect">Disconnect device</string>
-    <string name="preferences">Preferences</string>
+    <string name="fuelmap">Fuel Map</string>
     <string name="special_keys">Special keys</string>
     <!-- Preference dialog -->
     <string name="general_preferences">General</string>

@@ -98,10 +98,14 @@ public class MainActivity extends Activity {
 		    		mSerialService.start();
             	}
             return true;
-            /*
-        case R.id.preferences:
-        	doPreferences();
+            
+        case R.id.fuelmap:
+        	
+        	Intent i = new Intent(this, FuelMapper.class);
+        	startActivity(i);
+        	
             return true;
+            /*
         case R.id.menu_special_keys:
             //doDocumentKeys();
             return true;
