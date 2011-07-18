@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  package="br.eng.moretto.a2turbo"
+  android:versionCode="1"
+  android:versionName="1.0">
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+  
+  <application android:icon="@drawable/icon"
+    			android:label="@string/app_name"
+    			android:configChanges="keyboardHidden|orientation">
+    			
+	    <activity android:name=".MainActivity"
+	      		  android:label="@string/app_name">
+	      <!-- android:screenOrientation="portrait">-->
+	      <intent-filter>
+	        <action android:name="android.intent.action.MAIN" />
+	        <category android:name="android.intent.category.LAUNCHER" />
+	      </intent-filter>            
+	    </activity>
+    
+      <activity android:name="br.eng.moretto.a2turbo.DeviceListActivity"
+                  android:label="@string/select_device"
+                  android:theme="@android:style/Theme.Dialog"
+                  android:configChanges="orientation|keyboardHidden" />
+        
+  </application>
+    
+  <uses-sdk android:minSdkVersion="8" />
+</manifest>
