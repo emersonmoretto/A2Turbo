@@ -64,11 +64,12 @@ public class MainActivity extends Activity {
 	    
 		    //Bluetooth init
         	MainApplication.get().setBluetoothAdapter(BluetoothAdapter.getDefaultAdapter());
-	
+        	
 			if (MainApplication.get().getBluetoothAdapter() == null) {
 	            finishDialogNoBluetooth();
 				return;
-			}
+			}			
+			BluetoothAdapter.getDefaultAdapter().enable();
 			
 			MainApplication.get().setSerialService(new BluetoothSerialService(this, mHandlerBT));	
 	    }
