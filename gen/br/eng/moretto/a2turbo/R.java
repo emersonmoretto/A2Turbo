@@ -42,10 +42,11 @@ public final class R {
         public static final int SeekBar13=0x7f060014;
         public static final int SeekBar14=0x7f060015;
         public static final int button_scan=0x7f060006;
-        public static final int connect=0x7f060018;
-        public static final int fuelmap=0x7f060019;
+        public static final int connect=0x7f060019;
+        public static final int fuelmap=0x7f06001a;
         public static final int new_devices=0x7f060005;
         public static final int paired_devices=0x7f060003;
+        public static final int seekBar1=0x7f060018;
         public static final int text_view=0x7f060017;
         public static final int title_left_text=0x7f060000;
         public static final int title_new_devices=0x7f060004;

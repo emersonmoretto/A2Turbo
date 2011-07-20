@@ -16,4 +16,6 @@
  	android:id="@+id/text_view"
     />
     
+  <SeekBar android:id="@+id/seekBar1" android:layout_height="wrap_content" android:layout_width="match_parent"></SeekBar>
+    
 </LinearLayout>

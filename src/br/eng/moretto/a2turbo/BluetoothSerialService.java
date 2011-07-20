@@ -330,6 +330,12 @@ public class BluetoothSerialService {
             int sleep = 30;
             String pack = "";
             boolean openPack = false;
+            int packType = 0;
+            
+            /** 
+             * Package types
+             * x = 120
+             */
             
             // Keep listening to the InputStream while connected
             while (true) {
@@ -351,19 +357,42 @@ public class BluetoothSerialService {
                     	if(buffer[i] == 60){
                     		pack = "";
                     		openPack = true;
+                    		continue;
                     	}
+                    	
+                    	//getting pack type
+                    	if(packType == 0 && openPack && buffer[i] >= 97 && buffer[i] <= 122){
+                    		packType = buffer[i];
+                    		//Log.e(TAG, "Pack type "+packType);
+                    		continue;
+                    	}                   	
                     	
                     	//in range? concat!
-                    	if(openPack && buffer[i] >= 46 && buffer[i] <= 57){
-                    		pack = pack + new String(new byte[] {buffer[i]}); //convert byte to string
-                    		Log.e(TAG, "Concat "+pack);
-                    	}
+                    	if(openPack && packType > 0 && buffer[i] != 62){ //buffer[i] >= 46 && buffer[i] <= 57){
+                    		pack = pack + buffer[i];//new String(new byte[] {buffer[i]}); //convert byte to string
+                    		//Log.e(TAG, "Concat "+pack);
+                    	}else
                     	
-                    	//close package 
+                    	//close and send package 
                     	if(openPack && buffer[i] == 62){
-                    		Log.e(TAG, "Fechou "+pack);
-                    		mHandler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, pack).sendToTarget();
+                    		//Log.e(TAG, "Fechou "+pack);
+                    		
+                    		switch(packType){
+                    		
+	                    		case 120:
+	                    			mHandler.obtainMessage(MainActivity.GFORCE_X, bytes, -1, pack).sendToTarget();
+	                    			//Log.e(TAG, "Enviou "+pack);
+	                    			break;
+	                    		case 121:
+	                    			mHandler.obtainMessage(MainActivity.GFORCE_Y, bytes, -1, pack).sendToTarget();
+	                    			break;
+	                    			
+	                    		default:
+	                    			mHandler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, pack).sendToTarget();
+	                    		}
+                    		
                     		pack = "";
+                    		packType = 0;
                     	}                   	
                     	
                     }                  

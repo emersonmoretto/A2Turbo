@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,9 @@ public class MainActivity extends Activity {
     public static final int MESSAGE_WRITE = 3;
     public static final int MESSAGE_DEVICE_NAME = 4;
     public static final int MESSAGE_TOAST = 5;	
-
+    public static final int GFORCE_X = 120;
+    public static final int GFORCE_Y = 121;
+    
     // Key names received from the BluetoothChatService Handler
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
@@ -59,6 +62,9 @@ public class MainActivity extends Activity {
         mTitle.setText(R.string.app_name);
         mTitle = (TextView) findViewById(R.id.title_right_text);       
        
+        SeekBar sb = (SeekBar) findViewById(R.id.seekBar1);
+        sb.setMax(120);
+        
         
         if(MainApplication.get().getBluetoothAdapter() == null){
 	    
@@ -192,37 +198,40 @@ public class MainActivity extends Activity {
     private final Handler mHandlerBT = new Handler() {
     	
         @Override
-        public void handleMessage(Message msg) {        	
+        public void handleMessage(Message msg) {     
+        	
             switch (msg.what) {
-            case MESSAGE_STATE_CHANGE:
+            
+            	case MESSAGE_STATE_CHANGE:
                 
                 switch (msg.arg1) {
-                case BluetoothSerialService.STATE_CONNECTED:
+                
+                	case BluetoothSerialService.STATE_CONNECTED:
                 	
-                	if (mMenuItemConnect != null) {
-                		mMenuItemConnect.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-                		mMenuItemConnect.setTitle(R.string.disconnect);
-                	} 
-                    mTitle.setText("Conectado com ");
-                    mTitle.append(mConnectedDeviceName);
-                    break;
-                    
-                case BluetoothSerialService.STATE_CONNECTING:
-                    mTitle.setText("Conectando...");
-                    break;
-                    
-                case BluetoothSerialService.STATE_LISTEN:
-                case BluetoothSerialService.STATE_NONE:
-                	
-                	if (mMenuItemConnect != null) {
-                		mMenuItemConnect.setIcon(android.R.drawable.ic_menu_search);
-                		mMenuItemConnect.setTitle(R.string.connect);
-                	}
-            		mTitle.setText("Não conectado");
-
-                    break;
-                }
-                break;
+	                	if (mMenuItemConnect != null) {
+	                		mMenuItemConnect.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+	                		mMenuItemConnect.setTitle(R.string.disconnect);
+	                	} 
+	                    mTitle.setText("Conectado com ");
+	                    mTitle.append(mConnectedDeviceName);
+	                    break;
+	                    
+	                case BluetoothSerialService.STATE_CONNECTING:
+	                    mTitle.setText("Conectando...");
+	                    break;
+	                    
+	                case BluetoothSerialService.STATE_LISTEN:
+	                case BluetoothSerialService.STATE_NONE:
+	                	
+	                	if (mMenuItemConnect != null) {
+	                		mMenuItemConnect.setIcon(android.R.drawable.ic_menu_search);
+	                		mMenuItemConnect.setTitle(R.string.connect);
+	                	}
+	            		mTitle.setText("Não conectado");
+	
+	                    break;
+	                }
+	         break;
             case MESSAGE_WRITE:
             	
             	//byte[] writeBuf = (byte[]) msg.obj;
@@ -232,7 +241,7 @@ public class MainActivity extends Activity {
                 
             case MESSAGE_READ:
                 String readBuf = (String) msg.obj;              
-                
+                /*
                 TurboGauge t = (TurboGauge) findViewById(R.id.turbogauge);                
                 
                 try{
@@ -240,10 +249,40 @@ public class MainActivity extends Activity {
                 }catch (Exception e) {
                 	Log.e("tag", "nao deu");
 				}
+				*/
                 //Toast.makeText(getApplicationContext(), new String(readBuf), Toast.LENGTH_SHORT).show();
                 TextView text = (TextView) findViewById(R.id.text_view);
-                text.setText(new String(readBuf));
+                text.setText(readBuf);
                 
+                break;
+                
+            case GFORCE_X:
+                String x = (String) msg.obj;              
+                
+               // TextView text2 = (TextView) findViewById(R.id.text_view);
+                //text2.setText(x);
+                
+                SeekBar sb = (SeekBar) findViewById(R.id.seekBar1);
+                try{
+                	sb.setProgress(Integer.parseInt(x));
+                }catch (Exception e) {
+					
+				}
+                break;
+                
+            case GFORCE_Y:
+                String y = (String) msg.obj;              
+                
+                TextView textY = (TextView) findViewById(R.id.text_view);
+                textY.setText(y);
+                /*
+                SeekBar sb = (SeekBar) findViewById(R.id.seekBar1);
+                try{
+                	sb.setProgress(Integer.parseInt(x));
+                }catch (Exception e) {
+					
+				}
+				*/
                 break;
                 
             case MESSAGE_DEVICE_NAME:

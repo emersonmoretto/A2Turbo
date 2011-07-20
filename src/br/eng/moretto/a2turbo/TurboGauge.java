@@ -140,32 +140,9 @@ public final class TurboGauge extends View {
 		return "Pressão turbo (Kgf/cm2)";
 	}
 
-	/*
-	private SensorManager getSensorManager() {
-		return (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);		
-	}
-	
-	private void attachToSensor() {
-		
-		SensorManager sensorManager = getSensorManager();
-		
-		List<Sensor> sensors = sensorManager.getSensorList(Sensor.TYPE_TEMPERATURE);
-		if (sensors.size() > 0) {
-			Sensor sensor = sensors.get(0);
-			sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST, handler);
-		} else {
-			Log.e(TAG, "No temperature sensor found");
-		}		
-	}
-	*/
-	/*
-	private void detachFromSensor() {
-		SensorManager sensorManager = getSensorManager();
-		sensorManager.unregisterListener(this);
-	}
-*/
 	private void initDrawingTools() {
-		rimRect = new RectF(0.1f, 0.1f, 0.9f, 0.9f);
+		
+		rimRect = new RectF(0.03f, 0.03f, 0.97f, 0.97f);
 
 		// the linear gradient is a bit skewed for realism
 		rimPaint = new Paint();
@@ -232,13 +209,13 @@ public final class TurboGauge extends View {
 		titlePaint.setTextScaleX(0.8f);
 
 		titlePath = new Path();
-		titlePath.addArc(new RectF(0.24f, 0.24f, 0.76f, 0.76f), -180.0f, -180.0f);
+		titlePath.addArc(new RectF(0.24f, 0.35f, 0.76f, 0.76f), -180.0f, -180.0f);
 
 		logoPaint = new Paint();
 		logoPaint.setFilterBitmap(true);
 		logo = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.logo);
 		logoMatrix = new Matrix();
-		logoScale = (1.0f / logo.getWidth()) * 0.3f;;
+		logoScale = (1.0f / logo.getWidth()) * 0.5f;
 		logoMatrix.setScale(logoScale, logoScale);
 
 		handPaint = new Paint();
@@ -251,9 +228,9 @@ public final class TurboGauge extends View {
 		handPath.moveTo(0.5f - 0.012f, 0.5f + 0.1f);
 		
 		handPath.lineTo(0.5f - 0.012f, 0.5f + 0.1f);// - 0.007f);
-		handPath.lineTo(0.5f - 0.012f, 0.5f - 0.30f); //ponta 
-		handPath.lineTo(0.5f, 0.5f - 0.32f); //ponta fina
-		handPath.lineTo(0.5f + 0.012f, 0.5f - 0.30f); //voltando da ponta
+		handPath.lineTo(0.5f - 0.012f, 0.5f - 0.35f); //ponta 
+		handPath.lineTo(0.5f, 0.5f - 0.37f); //ponta fina
+		handPath.lineTo(0.5f + 0.012f, 0.5f - 0.35f); //voltando da ponta
 		//handPath.lineTo(0.5f + 0.010f, 0.5f + 0.2f - 0.007f);		
 		handPath.lineTo(0.5f + 0.012f, 0.5f + 0.1f);
 		
@@ -340,11 +317,11 @@ public final class TurboGauge extends View {
 				
 				if(value == centerDegree || valueString.equals("1.4") || value == minDegrees){
 					scalePaint.setTextSize(0.045f);
-					scalePaint.setTextScaleX(1.3f);
+					scalePaint.setTextScaleX(1.5f);
 					scalePaint.setColor(0xaf000000);
 				}else{
 					scalePaint.setTextSize(0.045f);
-					scalePaint.setTextScaleX(0.8f);
+					scalePaint.setTextScaleX(1.0f);
 					scalePaint.setColor(_SCALE_COLOR);
 				}					
 				
@@ -405,7 +382,7 @@ public final class TurboGauge extends View {
 	
 	private void drawTitle(Canvas canvas) {
 		String title = getTitle();
-		canvas.drawTextOnPath(title, titlePath, 0.0f,0.0f, titlePaint);				
+		canvas.drawTextOnPath(title, titlePath, 0.0f, 0.0f, titlePaint);				
 	}
 	
 	private void drawLogo(Canvas canvas) {
