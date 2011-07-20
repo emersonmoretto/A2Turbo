@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -74,6 +75,17 @@ public class MainActivity extends Activity {
         
     }
     
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+    	//Closing bluetooth connection
+        if( keyCode == KeyEvent.KEYCODE_BACK ){     
+        	MainApplication.get().getSerialService().stop();
+        	this.finish();
+            return true;
+        }
+        return false;
+    }
     
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
