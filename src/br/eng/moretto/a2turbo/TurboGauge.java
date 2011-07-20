@@ -1,10 +1,6 @@
 package br.eng.moretto.a2turbo;
 
-import java.util.List;
-
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
@@ -18,17 +14,11 @@ import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 public final class TurboGauge extends View {
 
@@ -404,11 +394,6 @@ public final class TurboGauge extends View {
 		canvas.restore();		
 	}
 	
-	private float nickToDegree(float nick) {
-		float rawDegree = ((nick < totalNicks / 2) ? nick : (nick - totalNicks)) * 2;
-		float shiftedDegree = rawDegree + centerDegree;
-		return shiftedDegree;
-	}
 	
 	private float degreeToAngle(float degree) {
 		
@@ -521,7 +506,7 @@ public final class TurboGauge extends View {
 		}
 		
 		if (lastHandMoveTime != -1L) {
-			long currentTime = System.currentTimeMillis();
+			//long currentTime = System.currentTimeMillis();
 			float delta = 0.05f; //(currentTime - lastHandMoveTime) / 1000.0f;
 
 			float direction = Math.signum(handVelocity);
@@ -563,7 +548,7 @@ public final class TurboGauge extends View {
 			Log.w(TAG, "Empty sensor event received");
 		}
 	}
-	*/
+	
 	
 	private float getRelativeTemperaturePosition() {
 		if (handPosition < centerDegree) {
@@ -572,6 +557,7 @@ public final class TurboGauge extends View {
 			return (handPosition - centerDegree) / (float) (maxDegrees - centerDegree);
 		}
 	}
+	*/
 	
 	public void setHandTarget(float temperature) {
 		if (temperature < minDegrees) {

@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,14 +15,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
 	
-	public static final String LOG_TAG = "BTTurbo";
+	public static final String LOG_TAG = "A2Turbo";
 	
 	  // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE = 1;
@@ -42,10 +42,8 @@ public class MainActivity extends Activity {
     private static TextView mTitle;
     private MenuItem mMenuItemConnect;
     private String mConnectedDeviceName = null;
-
     
-	private BluetoothAdapter mBluetoothAdapter = null;
-	private static BluetoothSerialService mSerialService = null;
+	
 	 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,20 +56,29 @@ public class MainActivity extends Activity {
         // Set up the custom title
         mTitle = (TextView) findViewById(R.id.title_left_text);
         mTitle.setText(R.string.app_name);
-        mTitle = (TextView) findViewById(R.id.title_right_text);
+        mTitle = (TextView) findViewById(R.id.title_right_text);       
+       
         
+        if(MainApplication.get().getBluetoothAdapter() == null){
+	    
+		    //Bluetooth init
+        	MainApplication.get().setBluetoothAdapter(BluetoothAdapter.getDefaultAdapter());
+	
+			if (MainApplication.get().getBluetoothAdapter() == null) {
+	            finishDialogNoBluetooth();
+				return;
+			}
+			
+			MainApplication.get().setSerialService(new BluetoothSerialService(this, mHandlerBT));	
+	    }
         
-        
-        //Bluetooth init
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-		if (mBluetoothAdapter == null) {
-            finishDialogNoBluetooth();
-			return;
-		}
-		
-        mSerialService = new BluetoothSerialService(this, mHandlerBT);
-        
+    }
+    
+    
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+      super.onConfigurationChanged(newConfig);
+      setContentView(R.layout.main);
     }
         
     @Override
@@ -94,8 +101,8 @@ public class MainActivity extends Activity {
         	}
         	else
             	if (getConnectionState() == BluetoothSerialService.STATE_CONNECTED) {
-            		mSerialService.stop();
-		    		mSerialService.start();
+            		MainApplication.get().getSerialService().stop();
+            		MainApplication.get().getSerialService().start();
             	}
             return true;
             
@@ -115,7 +122,7 @@ public class MainActivity extends Activity {
     }
     
     public int getConnectionState() {
-		return mSerialService.getState();
+		return MainApplication.get().getSerialService().getState();
 	}
     
     /**
@@ -134,9 +141,9 @@ public class MainActivity extends Activity {
                                      .getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
                
                 // Get the BluetoothDevice object
-                BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
+                BluetoothDevice device = MainApplication.get().getBluetoothAdapter().getRemoteDevice(address);
                 // Attempt to connect to the device
-                mSerialService.connect(device);                
+                MainApplication.get().getSerialService().connect(device);                
             }
             break;
 
@@ -205,7 +212,7 @@ public class MainActivity extends Activity {
                 break;
             case MESSAGE_WRITE:
             	
-            	byte[] writeBuf = (byte[]) msg.obj;
+            	//byte[] writeBuf = (byte[]) msg.obj;
             	//mEmulatorView.write(writeBuf, msg.arg1);
             	
                 break;
