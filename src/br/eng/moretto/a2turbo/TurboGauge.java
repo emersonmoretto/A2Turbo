@@ -275,7 +275,7 @@ public final class TurboGauge extends View {
 	
 	// in case there is no size specified
 	private int getPreferredSize() {
-		return 330;
+		return 300;
 	}
 
 	private void drawRim(Canvas canvas) {
