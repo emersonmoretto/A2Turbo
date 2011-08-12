@@ -44,6 +44,7 @@ public final class TurboGauge extends View {
 	private Paint titlePaint;	
 	private Path titlePath;
 
+	private Paint pressurePaint;
 	private Paint logoPaint;
 	private Bitmap logo;
 	private Matrix logoMatrix;
@@ -133,7 +134,7 @@ public final class TurboGauge extends View {
 		
 		initDrawingTools();
 		
-		setHandTarget(0f);
+		setHandTarget(1.1f);
 	}
 
 	private String getTitle() {
@@ -141,6 +142,17 @@ public final class TurboGauge extends View {
 	}
 
 	private void initDrawingTools() {
+		
+		
+		pressurePaint = new Paint();
+		pressurePaint.setStyle(Paint.Style.STROKE);
+		pressurePaint.setAntiAlias(true);
+		pressurePaint.setTypeface(Typeface.DEFAULT_BOLD);
+		pressurePaint.setTextAlign(Paint.Align.CENTER);
+		pressurePaint.setTextSize(0.17f);
+		pressurePaint.setTextScaleX(1f);
+		pressurePaint.setColor(0xafDD0000);
+		
 		
 		rimRect = new RectF(0.03f, 0.03f, 0.97f, 0.97f);
 
@@ -243,7 +255,8 @@ public final class TurboGauge extends View {
 		handScrewPaint.setStyle(Paint.Style.FILL);
 		
 		backgroundPaint = new Paint();
-		backgroundPaint.setFilterBitmap(true);
+		backgroundPaint.setAlpha(255);
+		//backgroundPaint.setFilterBitmap(true);
 	}
 	
 	@Override
@@ -419,6 +432,9 @@ public final class TurboGauge extends View {
 			canvas.drawPath(handPath, handPaint);
 			canvas.restore();
 			
+			canvas.drawRect(0.35f, 0.81f, 0.65f, 0.90f, facePaint);
+			canvas.drawText(handTarget+"", 0.5f, 0.91f, pressurePaint);
+			
 			canvas.drawCircle(0.5f, 0.5f, 0.01f, handScrewPaint);
 		}
 	}
@@ -494,6 +510,7 @@ public final class TurboGauge extends View {
 			}
 			handPosition += handVelocity * delta;
 			handVelocity += handAcceleration * delta;
+			
 			if ((handTarget - handPosition) * direction < 0.01f * direction) {
 				handPosition = handTarget;
 				handVelocity = 0.0f;
@@ -508,33 +525,6 @@ public final class TurboGauge extends View {
 			moveHand();
 		}
 	}
-	/*
-	@Override
-	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-		
-	}
-	
-
-	@Override
-	public void onSensorChanged(SensorEvent sensorEvent) {
-		if (sensorEvent.values.length > 0) {
-			float temperatureC = sensorEvent.values[0];
-			//Log.i(TAG, "*** Temperature: " + temperatureC);
-			//setHandTarget(1);
-		} else {
-			Log.w(TAG, "Empty sensor event received");
-		}
-	}
-	
-	
-	private float getRelativeTemperaturePosition() {
-		if (handPosition < centerDegree) {
-			return - (centerDegree - handPosition) / (float) (centerDegree - minDegrees);
-		} else {
-			return (handPosition - centerDegree) / (float) (maxDegrees - centerDegree);
-		}
-	}
-	*/
 	
 	public void setHandTarget(float temperature) {
 		if (temperature < minDegrees) {

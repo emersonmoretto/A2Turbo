@@ -1,5 +1,6 @@
 package br.eng.moretto.a2turbo;
 
+import br.eng.moretto.a2turbo.view.LambdaViewer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -91,6 +92,11 @@ public class MainActivity extends Activity {
         	this.finish();
             return true;
         }
+        
+        LambdaViewer l = (LambdaViewer) findViewById(R.id.lambdaViewer1); 
+        l.setValue((int) (Math.random()*10));
+        
+        
         return false;
     }
     
