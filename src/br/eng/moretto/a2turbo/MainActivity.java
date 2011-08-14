@@ -1,6 +1,7 @@
 package br.eng.moretto.a2turbo;
 
-import br.eng.moretto.a2turbo.view.LambdaViewer;
+import br.eng.moretto.a2turbo.view.GForceViewer;
+import br.eng.moretto.a2turbo.view.HallmeterViewer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -63,9 +64,6 @@ public class MainActivity extends Activity {
         mTitle.setText(R.string.app_name);
         mTitle = (TextView) findViewById(R.id.title_right_text);       
        
-        SeekBar sb = (SeekBar) findViewById(R.id.seekBar1);
-        sb.setMax(120);
-        
         
         if(MainApplication.get().getBluetoothAdapter() == null){
 	    
@@ -93,7 +91,7 @@ public class MainActivity extends Activity {
             return true;
         }
         
-        LambdaViewer l = (LambdaViewer) findViewById(R.id.lambdaViewer1); 
+        HallmeterViewer l = (HallmeterViewer) findViewById(R.id.lambdaViewer1); 
         l.setValue((int) (Math.random()*10));
         
         
@@ -257,38 +255,29 @@ public class MainActivity extends Activity {
 				}
 				*/
                 //Toast.makeText(getApplicationContext(), new String(readBuf), Toast.LENGTH_SHORT).show();
-                TextView text = (TextView) findViewById(R.id.text_view);
-                text.setText(readBuf);
                 
                 break;
                 
             case GFORCE_X:
                 String x = (String) msg.obj;              
                 
-               // TextView text2 = (TextView) findViewById(R.id.text_view);
-                //text2.setText(x);
-                
-                SeekBar sb = (SeekBar) findViewById(R.id.seekBar1);
-                try{
-                	sb.setProgress(Integer.parseInt(x));
-                }catch (Exception e) {
-					
+                GForceViewer gforce = (GForceViewer) findViewById(R.id.gForceViewer1);
+               
+                //SeekBar sb = (SeekBar) findViewById(R.id.seekBar1);
+                try{                	
+                	  gforce.setGForce(Integer.parseInt(x), null);
+                }catch (Exception e) {					
 				}
                 break;
                 
             case GFORCE_Y:
-                String y = (String) msg.obj;              
-                
-                TextView textY = (TextView) findViewById(R.id.text_view);
-                textY.setText(y);
-                /*
-                SeekBar sb = (SeekBar) findViewById(R.id.seekBar1);
-                try{
-                	sb.setProgress(Integer.parseInt(x));
-                }catch (Exception e) {
-					
-				}
-				*/
+            	   String y = (String) msg.obj;
+            	 GForceViewer gforcey = (GForceViewer) findViewById(R.id.gForceViewer1);
+                 
+                 try{                	
+                	 gforcey.setGForce(null,Integer.parseInt(y));
+                 }catch (Exception e) {					
+ 				}
                 break;
                 
             case MESSAGE_DEVICE_NAME:

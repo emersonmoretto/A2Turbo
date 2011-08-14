@@ -6,42 +6,27 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent">
   
-  
-  
   <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="500px"
   android:layout_height="fill_parent">
- 
- 
-  <br.eng.moretto.a2turbo.view.LambdaViewer android:id="@+id/lambdaViewer1" android:layout_width="500px" android:layout_height="80px"></br.eng.moretto.a2turbo.view.LambdaViewer>
- 
- 
   
-  <SeekBar android:progressDrawable="@drawable/custom_seekbar" android:id="@+id/seekBar1" android:layout_height="wrap_content" android:layout_width="150px"></SeekBar>
-  
-  
+  <br.eng.moretto.a2turbo.view.HallmeterViewer android:id="@+id/lambdaViewer1" android:layout_width="500px" android:layout_height="80px"></br.eng.moretto.a2turbo.view.HallmeterViewer>
  
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_marginLeft="60px" android:orientation="vertical">
+      <br.eng.moretto.a2turbo.view.GForceViewer android:layout_width="320px" android:id="@+id/gForceViewer1" android:layout_height="320px"></br.eng.moretto.a2turbo.view.GForceViewer>
+  </LinearLayout>
  
-  <TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
- 	android:id="@+id/text_view" />
-   
- <TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
- 	android:id="@+id/text_view" />
-
 
 </LinearLayout>
   
 
- 	
- 	  <br.eng.moretto.a2turbo.TurboGauge
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_marginTop="30px" android:orientation="vertical"> 	
+ <br.eng.moretto.a2turbo.TurboGauge
     android:id="@+id/turbogauge"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content" />
+</LinearLayout>
     
 </LinearLayout>

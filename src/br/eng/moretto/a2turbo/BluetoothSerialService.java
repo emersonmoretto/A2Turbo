@@ -340,9 +340,9 @@ public class BluetoothSerialService {
             // Keep listening to the InputStream while connected
             while (true) {
                 try {                	
-                	byte[] buffer = new byte[16];
+                	byte[] buffer = new byte[32];
                 	
-                    // Read from the InputStream
+                	// Read from the InputStream
                     bytes = mmInStream.read(buffer);
        
                     /***
@@ -351,7 +351,7 @@ public class BluetoothSerialService {
                      */                    
                     if(bytes > 0)
                     for(int i=0; i < bytes ; i++){
-                    	Log.e(TAG, "Received ("+i+" bytes): "+buffer[i]);
+                    	//Log.e(TAG, "Received ("+i+" bytes): "+buffer[i]);
                     	
                     	//open pack
                     	if(buffer[i] == 60){
@@ -381,7 +381,7 @@ public class BluetoothSerialService {
                     		
 	                    		case 120:
 	                    			mHandler.obtainMessage(MainActivity.GFORCE_X, bytes, -1, pack).sendToTarget();
-	                    			//Log.e(TAG, "Enviou "+pack);
+	                    			Log.e(TAG, "Enviou "+pack);
 	                    			break;
 	                    		case 121:
 	                    			mHandler.obtainMessage(MainActivity.GFORCE_Y, bytes, -1, pack).sendToTarget();
