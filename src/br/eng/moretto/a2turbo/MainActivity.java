@@ -93,6 +93,8 @@ public class MainActivity extends Activity {
         
         HallmeterViewer l = (HallmeterViewer) findViewById(R.id.lambdaViewer1); 
         l.setValue((int) (Math.random()*10));
+                
+        MainApplication.get().getSerialService().write("aaaa".getBytes());
         
         
         return false;
