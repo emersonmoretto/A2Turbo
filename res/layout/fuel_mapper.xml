@@ -2,9 +2,9 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent" android:orientation="horizontal">
+  android:layout_height="match_parent" android:orientation="horizontal" >
     
-<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:orientation="horizontal" android:layout_height="220dip">
+<LinearLayout android:id="@+id/LinearLayout01" android:padding="10px" android:layout_width="wrap_content" android:orientation="horizontal" android:layout_height="220dip">
 
 <br.eng.moretto.a2turbo.view.VerticalSeekBar
 	android:id="@+id/SeekBar01"
@@ -82,13 +82,8 @@
 	android:id="@+id/SeekBar13"
     android:progressDrawable="@drawable/progress_vertical"
     android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>    
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar14"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
     android:layout_height="fill_parent" android:layout_width="26dip"/>
+<br.eng.moretto.a2turbo.view.VerticalSeekBar android:id="@+id/SeekBar14" android:layout_width="26dip" android:layout_height="fill_parent"></br.eng.moretto.a2turbo.view.VerticalSeekBar>
 
 </LinearLayout>
 
