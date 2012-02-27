@@ -12,6 +12,7 @@ public class HallmeterViewer extends View {
 	Paint darkRed,red,darkYellow,yellow,darkGreen,green,textPaint;
 	
 	int value = 0;
+	  
 	
 	public HallmeterViewer(Context context) {
 		super(context);
@@ -119,7 +120,10 @@ public class HallmeterViewer extends View {
 	 */
 	public void setValue(int value){
 	
+		if(value == this.value) return;
+		
 		this.value = value;
+		this.invalidate();
 	}
 
 }

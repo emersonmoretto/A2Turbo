@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
     public static final int MESSAGE_TOAST = 5;	
     public static final int GFORCE_X = 120;
     public static final int GFORCE_Y = 121;
+    public static final int LAMBDA = 108;
     
     // Key names received from the BluetoothChatService Handler
     public static final String DEVICE_NAME = "device_name";
@@ -91,8 +92,7 @@ public class MainActivity extends Activity {
             return true;
         }
         
-        HallmeterViewer l = (HallmeterViewer) findViewById(R.id.lambdaViewer1); 
-        l.setValue((int) (Math.random()*10));
+       
                 
         MainApplication.get().getSerialService().write("aaaa".getBytes());
         
@@ -270,6 +270,14 @@ public class MainActivity extends Activity {
                 	  gforce.setGForce(Integer.parseInt(x), null);
                 }catch (Exception e) {					
 				}
+                break;
+                
+            case LAMBDA:
+                String lambda = (String) msg.obj;              
+                
+                HallmeterViewer l = (HallmeterViewer) findViewById(R.id.lambdaViewer1); 
+                l.setValue(Integer.parseInt(lambda));
+                
                 break;
                 
             case GFORCE_Y:

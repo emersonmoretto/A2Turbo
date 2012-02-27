@@ -375,7 +375,7 @@ public class BluetoothSerialService {
                     	
                     	//close and send package 
                     	if(openPack && buffer[i] == 62){
-                    		//Log.e(TAG, "Fechou "+pack);
+                    		Log.e(TAG, "Fechou pack type "+ (char) packType +  " code + "+packType);
                     		
                     		switch(packType){
                     		
@@ -385,6 +385,9 @@ public class BluetoothSerialService {
 	                    			break;
 	                    		case 121:
 	                    			mHandler.obtainMessage(MainActivity.GFORCE_Y, bytes, -1, pack).sendToTarget();
+	                    			break;
+	                    		case 108:
+	                    			mHandler.obtainMessage(MainActivity.LAMBDA, bytes, -1, pack).sendToTarget();
 	                    			break;
 	                    			
 	                    		default:
