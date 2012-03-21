@@ -1,9 +1,9 @@
 package br.eng.moretto.a2turbo;
 
-import br.eng.moretto.a2turbo.view.GForceViewer;
-import br.eng.moretto.a2turbo.view.HallmeterViewer;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
@@ -18,9 +18,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.view.WindowManager;
 import android.widget.Toast;
+import br.eng.moretto.a2turbo.view.GForceViewer;
+import br.eng.moretto.a2turbo.view.HallmeterViewer;
 
 public class MainActivity extends Activity {
 
@@ -40,13 +41,16 @@ public class MainActivity extends Activity {
     public static final int GFORCE_X = 120;
     public static final int GFORCE_Y = 121;
     public static final int LAMBDA = 108;
+    public static final int TURBO = 116;
     
     // Key names received from the BluetoothChatService Handler
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
 
+	private static final int LED_NOTIFICATION_ID = 1010;
+
 	
-    private static TextView mTitle;
+    //private static TextView mTitle;
     private MenuItem mMenuItemConnect;
     private String mConnectedDeviceName = null;
     
@@ -56,14 +60,20 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+        //requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        
+        //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
         setContentView(R.layout.main);    
-        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
-          
+        
         // Set up the custom title
-        mTitle = (TextView) findViewById(R.id.title_left_text);
-        mTitle.setText(R.string.app_name);
-        mTitle = (TextView) findViewById(R.id.title_right_text);       
+        //mTitle = (TextView) findViewById(R.id.title_left_text);
+        //mTitle.setText(R.string.app_name);
+        //mTitle = (TextView) findViewById(R.id.title_right_text);       
        
         
         if(MainApplication.get().getBluetoothAdapter() == null){
@@ -128,6 +138,9 @@ public class MainActivity extends Activity {
             	if (getConnectionState() == BluetoothSerialService.STATE_CONNECTED) {
             		MainApplication.get().getSerialService().stop();
             		MainApplication.get().getSerialService().start();
+            		
+            		NotificationManager nm = ( NotificationManager ) getSystemService( NOTIFICATION_SERVICE );
+            		nm.cancel( LED_NOTIFICATION_ID );
             	}
             return true;
             
@@ -218,12 +231,12 @@ public class MainActivity extends Activity {
 	                		mMenuItemConnect.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
 	                		mMenuItemConnect.setTitle(R.string.disconnect);
 	                	} 
-	                    mTitle.setText("Conectado com ");
-	                    mTitle.append(mConnectedDeviceName);
+	                    //mTitle.setText("Conectado com ");
+	                    //mTitle.append(mConnectedDeviceName);
 	                    break;
 	                    
 	                case BluetoothSerialService.STATE_CONNECTING:
-	                    mTitle.setText("Conectando...");
+	                    //mTitle.setText("Conectando...");
 	                    break;
 	                    
 	                case BluetoothSerialService.STATE_LISTEN:
@@ -233,7 +246,7 @@ public class MainActivity extends Activity {
 	                		mMenuItemConnect.setIcon(android.R.drawable.ic_menu_search);
 	                		mMenuItemConnect.setTitle(R.string.connect);
 	                	}
-	            		mTitle.setText("Não conectado");
+	            		//mTitle.setText("Não conectado");
 	
 	                    break;
 	                }
@@ -271,6 +284,18 @@ public class MainActivity extends Activity {
                 }catch (Exception e) {					
 				}
                 break;
+            case TURBO:
+                String turbo = (String) msg.obj;              
+                
+                TurboGauge t = (TurboGauge) findViewById(R.id.turbogauge);               
+                
+                try{
+                	t.setHandTarget( (Float.parseFloat(turbo)/10) );                
+                }catch (Exception e) {
+                	Log.e("tag", "nao deu");
+				}
+                System.out.println(turbo);
+                break;
                 
             case LAMBDA:
                 String lambda = (String) msg.obj;              
@@ -295,6 +320,15 @@ public class MainActivity extends Activity {
                 mConnectedDeviceName = msg.getData().getString(DEVICE_NAME);
                 Toast.makeText(getApplicationContext(), "Conectado com "
                 		+ mConnectedDeviceName, Toast.LENGTH_SHORT).show();
+                
+                NotificationManager nm = ( NotificationManager ) getSystemService( NOTIFICATION_SERVICE );
+                Notification notif = new Notification();
+                notif.ledARGB = 0xFFff0000;
+                notif.flags = Notification.FLAG_SHOW_LIGHTS;
+//                notif.ledOnMS = 100; 
+//                notif.ledOffMS = 100; 
+                nm.notify(LED_NOTIFICATION_ID, notif);
+                
                 break;
                 
             case MESSAGE_TOAST:

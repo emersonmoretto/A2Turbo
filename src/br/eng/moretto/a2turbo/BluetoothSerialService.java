@@ -389,7 +389,9 @@ public class BluetoothSerialService {
 	                    		case 108:
 	                    			mHandler.obtainMessage(MainActivity.LAMBDA, bytes, -1, pack).sendToTarget();
 	                    			break;
-	                    			
+	                    		case 116:
+	                    			mHandler.obtainMessage(MainActivity.TURBO, bytes, -1, pack).sendToTarget();
+	                    			break;	
 	                    		default:
 	                    			mHandler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, pack).sendToTarget();
 	                    		}

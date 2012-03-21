@@ -130,11 +130,9 @@ public final class TurboGauge extends View {
 		return state;
 	}
 
-	private void init() {
-		
-		initDrawingTools();
-		
-		setHandTarget(1.1f);
+	private void init() {		
+		initDrawingTools();		
+		setHandTarget(0.0f);
 	}
 
 	private String getTitle() {
@@ -142,8 +140,7 @@ public final class TurboGauge extends View {
 	}
 
 	private void initDrawingTools() {
-		
-		
+				
 		pressurePaint = new Paint();
 		pressurePaint.setStyle(Paint.Style.STROKE);
 		pressurePaint.setAntiAlias(true);
@@ -400,8 +397,7 @@ public final class TurboGauge extends View {
 	
 	private void drawLogo(Canvas canvas) {
 		
-		canvas.save(Canvas.MATRIX_SAVE_FLAG);
-		
+		canvas.save(Canvas.MATRIX_SAVE_FLAG);		
 		
 		canvas.translate(0.5f - logo.getWidth() * logoScale / 2.0f, 
 						 0.5f - logo.getHeight() * logoScale / 2.0f);
@@ -467,8 +463,7 @@ public final class TurboGauge extends View {
 
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		Log.d(TAG, "Size changed to " + w + "x" + h);
-		
+		Log.d(TAG, "Size changed to " + w + "x" + h);	
 		regenerateBackground();
 	}
 	
@@ -526,14 +521,14 @@ public final class TurboGauge extends View {
 		}
 	}
 	
-	public void setHandTarget(float temperature) {
-		if (temperature < minDegrees) {
-			temperature = minDegrees;
-		} else if (temperature > maxDegrees) {
-			temperature = maxDegrees;
+	public void setHandTarget(float pressure) {
+		if (pressure < minDegrees) {
+			pressure = minDegrees;
+		} else if (pressure > maxDegrees) {
+			pressure = maxDegrees;
 		}
 		
-		handTarget = temperature;
+		handTarget = pressure;
 		handInitialized = true;
 		invalidate();
 	}
