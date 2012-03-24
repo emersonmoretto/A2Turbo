@@ -27,34 +27,47 @@ public final class R {
         public static final int seek_thumb_wide=0x7f02000d;
     }
     public static final class id {
-        public static final int LinearLayout01=0x7f060007;
-        public static final int SeekBar01=0x7f060008;
-        public static final int SeekBar02=0x7f060009;
-        public static final int SeekBar03=0x7f06000a;
-        public static final int SeekBar04=0x7f06000b;
-        public static final int SeekBar05=0x7f06000c;
-        public static final int SeekBar06=0x7f06000d;
-        public static final int SeekBar07=0x7f06000e;
-        public static final int SeekBar08=0x7f06000f;
-        public static final int SeekBar09=0x7f060010;
-        public static final int SeekBar10=0x7f060011;
-        public static final int SeekBar11=0x7f060012;
-        public static final int SeekBar12=0x7f060013;
-        public static final int SeekBar13=0x7f060014;
-        public static final int SeekBar14=0x7f060015;
+        public static final int SeekBar01=0x7f060016;
+        public static final int SeekBar02=0x7f060017;
+        public static final int SeekBar03=0x7f060018;
+        public static final int SeekBar04=0x7f060019;
+        public static final int SeekBar05=0x7f06001a;
+        public static final int SeekBar06=0x7f06001b;
+        public static final int SeekBar07=0x7f06001c;
+        public static final int SeekBar08=0x7f06001d;
+        public static final int SeekBar09=0x7f06001e;
+        public static final int SeekBar10=0x7f06001f;
+        public static final int SeekBar11=0x7f060020;
+        public static final int SeekBar12=0x7f060021;
         public static final int button_scan=0x7f060006;
-        public static final int connect=0x7f06001a;
-        public static final int fuelmap=0x7f06001b;
-        public static final int gForceViewer1=0x7f060018;
-        public static final int lambdaViewer1=0x7f060016;
-        public static final int linearLayout1=0x7f060017;
+        public static final int connect=0x7f060027;
+        public static final int fuelmap=0x7f060028;
+        public static final int gForceViewer1=0x7f060023;
+        public static final int lambdaViewer1=0x7f060022;
+        public static final int lambdaViewerFuel=0x7f060007;
+        public static final int linearLayout1=0x7f060015;
+        public static final int linearLayout2=0x7f060008;
         public static final int new_devices=0x7f060005;
         public static final int paired_devices=0x7f060003;
+        public static final int saveMap=0x7f060025;
+        public static final int sendMap=0x7f060026;
+        public static final int textView01=0x7f060009;
+        public static final int textView02=0x7f06000a;
+        public static final int textView03=0x7f06000b;
+        public static final int textView04=0x7f06000c;
+        public static final int textView05=0x7f06000d;
+        public static final int textView06=0x7f06000e;
+        public static final int textView07=0x7f06000f;
+        public static final int textView08=0x7f060010;
+        public static final int textView09=0x7f060011;
+        public static final int textView10=0x7f060012;
+        public static final int textView11=0x7f060013;
+        public static final int textView12=0x7f060014;
         public static final int title_left_text=0x7f060000;
         public static final int title_new_devices=0x7f060004;
         public static final int title_paired_devices=0x7f060002;
         public static final int title_right_text=0x7f060001;
-        public static final int turbogauge=0x7f060019;
+        public static final int turbogauge=0x7f060024;
     }
     public static final class layout {
         public static final int custom_title=0x7f030000;
@@ -65,7 +78,8 @@ public final class R {
         public static final int message=0x7f030005;
     }
     public static final class menu {
-        public static final int option_menu=0x7f050000;
+        public static final int fuel_menu=0x7f050000;
+        public static final int option_menu=0x7f050001;
     }
     public static final class string {
         public static final int alert_dialog_no=0x7f040003;

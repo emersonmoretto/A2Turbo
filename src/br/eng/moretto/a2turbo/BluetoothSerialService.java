@@ -46,7 +46,12 @@ public class BluetoothSerialService {
     // Member fields
     private final BluetoothAdapter mAdapter;
     private final Handler mHandler;
-    private ConnectThread mConnectThread;
+    private Handler mHandlerFuel;
+    public void setmHandlerFuel(Handler mHandlerFuel) {
+		this.mHandlerFuel = mHandlerFuel;
+	}
+
+	private ConnectThread mConnectThread;
     private ConnectedThread mConnectedThread;
     private int mState;
     
@@ -67,6 +72,7 @@ public class BluetoothSerialService {
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         mState = STATE_NONE;
         mHandler = handler;
+        mHandlerFuel = null;
        // mEmulatorView = emulatorView;
     }
 
@@ -388,6 +394,9 @@ public class BluetoothSerialService {
 	                    			break;
 	                    		case 108:
 	                    			mHandler.obtainMessage(MainActivity.LAMBDA, bytes, -1, pack).sendToTarget();
+	                    			if(mHandlerFuel != null){
+	                    				mHandlerFuel.obtainMessage(MainActivity.LAMBDA, bytes, -1, pack).sendToTarget();
+	                    			}
 	                    			break;
 	                    		case 116:
 	                    			mHandler.obtainMessage(MainActivity.TURBO, bytes, -1, pack).sendToTarget();

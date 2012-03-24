@@ -1,91 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"    
+    android:gravity="center">
+        
+<br.eng.moretto.a2turbo.view.HallmeterViewer
+    android:id="@+id/lambdaViewerFuel"
+    android:layout_marginLeft="10dp"
+    android:layout_width="420dp"
+    android:layout_height="60dp" />
+
 <LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent" android:orientation="horizontal" >
-    
-<LinearLayout android:id="@+id/LinearLayout01" android:padding="10px" android:layout_width="wrap_content" android:orientation="horizontal" android:layout_height="220dip">
+    android:id="@+id/linearLayout2"
+    android:layout_width="wrap_content"
+    android:layout_height="25dp"
+    android:orientation="horizontal" >
 
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar01"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>
     
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar02"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar03"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>    
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar04"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar05"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>    
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar06"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>    
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar07"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>    
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar08"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>
+<TextView
+    android:id="@+id/textView01"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"
+    android:layout_marginLeft="17dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+            
+<TextView
+    android:id="@+id/textView02"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"    
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
 
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar09"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>    
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar10"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>    
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar11"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>    
-    
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar12"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>
+<TextView
+    android:id="@+id/textView03"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+            
+<TextView
+    android:id="@+id/textView04"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"    
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
 
-<br.eng.moretto.a2turbo.view.VerticalSeekBar
-	android:id="@+id/SeekBar13"
-    android:progressDrawable="@drawable/progress_vertical"
-    android:thumb="@drawable/seek_thumb"
-    android:layout_height="fill_parent" android:layout_width="26dip"/>
-<br.eng.moretto.a2turbo.view.VerticalSeekBar android:id="@+id/SeekBar14" android:layout_width="26dip" android:layout_height="fill_parent"></br.eng.moretto.a2turbo.view.VerticalSeekBar>
+<TextView
+    android:id="@+id/textView05"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+            
+<TextView
+    android:id="@+id/textView06"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"    
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+
+<TextView
+    android:id="@+id/textView07"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+            
+<TextView
+    android:id="@+id/textView08"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"    
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+
+<TextView
+    android:id="@+id/textView09"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+            
+<TextView
+    android:id="@+id/textView10"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"    
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+
+<TextView
+    android:id="@+id/textView11"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+            
+<TextView
+    android:id="@+id/textView12"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"    
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="11dp"
+    android:text="00" />
+
+ 
 
 </LinearLayout>
 
+
+<LinearLayout
+    android:id="@+id/linearLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar01"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+    
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar02"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+  
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar03"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar04"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+		android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar05"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar06"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar07"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar08"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar09"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar10"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar11"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar12"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+</LinearLayout>
     
 </LinearLayout>

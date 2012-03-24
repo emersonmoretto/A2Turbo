@@ -100,11 +100,10 @@ public class MainActivity extends Activity {
         	MainApplication.get().getSerialService().stop();
         	this.finish();
             return true;
-        }
-        
+        }       
        
                 
-        MainApplication.get().getSerialService().write("aaaa".getBytes());
+        //MainApplication.get().getSerialService().write("aaaa".getBytes());
         
         
         return false;
@@ -147,6 +146,7 @@ public class MainActivity extends Activity {
         case R.id.fuelmap:
         	
         	Intent i = new Intent(this, FuelMapper.class);
+        	
         	startActivity(i);
         	
             return true;

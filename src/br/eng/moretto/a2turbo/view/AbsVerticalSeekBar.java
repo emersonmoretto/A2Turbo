@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.widget.TextView;
 
 public class AbsVerticalSeekBar extends VerticalProgressBar{
 
@@ -317,7 +318,11 @@ public class AbsVerticalSeekBar extends VerticalProgressBar{
         final int max = getMax();
         progress += scale * max;
 
-        setProgress((int) progress, true);
+        setProgress(((int) (progress/10))*10,true);
+        //setProgress((int) progress, true);
+        
+       // TextView t = (TextView) findViewById(R.id.textView01);
+        //t.setText("11");
     }
 
     /**
@@ -340,7 +345,10 @@ public class AbsVerticalSeekBar extends VerticalProgressBar{
      * This is called when the user either releases his touch or the touch is
      * canceled.
      */
-    void onStopTrackingTouch() {
+    void onStopTrackingTouch() {    	 
+    	this.setProgress(((int) (this.getProgress() / 10))*10);
+    	this.refreshDrawableState();
+    	System.out.println(this.getProgress());
     }
 
     /**
@@ -362,7 +370,10 @@ public class AbsVerticalSeekBar extends VerticalProgressBar{
 
             case KeyEvent.KEYCODE_DPAD_UP:
                 if (progress >= getMax()) break;
-                setProgress(progress + mKeyProgressIncrement, true);
+                
+                setProgress(50,true);
+                //setProgress(((int) (progress + mKeyProgressIncrement / 10))*10,true);
+                //setProgress(progress + mKeyProgressIncrement, true);
                 onKeyChange();
                 return true;
         }
