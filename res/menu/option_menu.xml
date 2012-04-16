@@ -19,7 +19,7 @@
           android:title="@string/connect" />
           
 	  <item android:id="@+id/fuelmap"
-	        android:icon="@android:drawable/ic_menu_search"
+	        android:icon="@android:drawable/ic_menu_edit"
 	        android:title="@string/fuelmap" />
 </menu>
 

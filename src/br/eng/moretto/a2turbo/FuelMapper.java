@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 import br.eng.moretto.a2turbo.view.HallmeterViewer;
 import br.eng.moretto.a2turbo.view.VerticalSeekBar;
 
@@ -34,7 +35,7 @@ public class FuelMapper extends Activity {
 	        
 		setContentView(R.layout.fuel_mapper);   
 		
-		//TODO persist values in preferences
+		//persist values in preferences
 			
 		// Restore preferences
 	    SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -109,7 +110,7 @@ public class FuelMapper extends Activity {
         	mapa = mapa + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar09)).getProgress();
         	mapa = mapa + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar10)).getProgress();
         	mapa = mapa + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar11)).getProgress();
-        	mapa = mapa + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar12)).getProgress();
+        	mapa = mapa + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar12)).getProgress() + ","; // end delimiter
         	
         	// We need an Editor object to make preference changes.
             // All objects are from android.context.Context            
@@ -124,6 +125,8 @@ public class FuelMapper extends Activity {
 	            // Commit the edits!
 	            editor.commit();
 	            
+	            Toast.makeText(getApplicationContext(), "Mapa salvo!", Toast.LENGTH_SHORT).show();
+	            
 	        	break;
 	        case R.id.sendMap:
 	        	System.out.println("enviando mapa");
@@ -133,7 +136,9 @@ public class FuelMapper extends Activity {
 	            // Commit the edits!
 	            editor.commit();	            
 	            
-	        	MainApplication.get().getSerialService().write(mapa.getBytes());
+	        	MainApplication.get().getSerialService().write(("m"+mapa).getBytes());
+	        	
+	        	Toast.makeText(getApplicationContext(), "Mapa enviado!", Toast.LENGTH_SHORT).show();
 	        	
 	            return true;	            
 	        }

@@ -168,7 +168,7 @@ public class VerticalProgressBar extends View {
      * </ul>
      */
     private void initProgressBar() {
-        mMax = 100;
+        mMax = 90;
         mProgress = 0;
         mSecondaryProgress = 0;
         mMinWidth = 24;

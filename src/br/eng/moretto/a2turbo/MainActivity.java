@@ -1,5 +1,6 @@
 package br.eng.moretto.a2turbo;
 
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -100,12 +101,8 @@ public class MainActivity extends Activity {
         	MainApplication.get().getSerialService().stop();
         	this.finish();
             return true;
-        }       
-       
-                
+        }         
         //MainApplication.get().getSerialService().write("aaaa".getBytes());
-        
-        
         return false;
     }
     
@@ -113,6 +110,18 @@ public class MainActivity extends Activity {
     public void onConfigurationChanged(Configuration newConfig) {
       super.onConfigurationChanged(newConfig);
       setContentView(R.layout.main);
+    }
+    
+    @Override
+    protected void onStart() {    
+    	super.onStart();
+
+    	TurboGauge t = (TurboGauge) findViewById(R.id.turbogauge);               
+        t.setHandTarget((float) 0.0);
+   
+        RPMGauge t2 = (RPMGauge) findViewById(R.id.rpmgauge);
+        t2.setHandTarget((float) 0.0);
+    	
     }
         
     @Override
@@ -126,6 +135,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+        
         case R.id.connect:
         	
         	if (getConnectionState() == BluetoothSerialService.STATE_NONE) {
@@ -138,23 +148,16 @@ public class MainActivity extends Activity {
             		MainApplication.get().getSerialService().stop();
             		MainApplication.get().getSerialService().start();
             		
-            		NotificationManager nm = ( NotificationManager ) getSystemService( NOTIFICATION_SERVICE );
-            		nm.cancel( LED_NOTIFICATION_ID );
+            		//NotificationManager nm = ( NotificationManager ) getSystemService( NOTIFICATION_SERVICE );
+            		//nm.cancel( LED_NOTIFICATION_ID );
             	}
             return true;
             
         case R.id.fuelmap:
         	
-        	Intent i = new Intent(this, FuelMapper.class);
-        	
-        	startActivity(i);
-        	
+        	Intent i = new Intent(this, FuelMapper.class);        	
+        	startActivity(i);        	
             return true;
-            /*
-        case R.id.menu_special_keys:
-            //doDocumentKeys();
-            return true;
-            */
         }
         return false;
     }
@@ -181,7 +184,9 @@ public class MainActivity extends Activity {
                 // Get the BluetoothDevice object
                 BluetoothDevice device = MainApplication.get().getBluetoothAdapter().getRemoteDevice(address);
                 // Attempt to connect to the device
-                MainApplication.get().getSerialService().connect(device);                
+                MainApplication.get().getSerialService().connect(device);   
+                
+                
             }
             break;
 
@@ -259,18 +264,9 @@ public class MainActivity extends Activity {
                 break;
                 
             case MESSAGE_READ:
-                String readBuf = (String) msg.obj;              
-                /*
-                TurboGauge t = (TurboGauge) findViewById(R.id.turbogauge);                
+                String readBuf = (String) msg.obj;            
                 
-                try{
-                	t.setHandTarget(Float.parseFloat(readBuf));                
-                }catch (Exception e) {
-                	Log.e("tag", "nao deu");
-				}
-				*/
-                //Toast.makeText(getApplicationContext(), new String(readBuf), Toast.LENGTH_SHORT).show();
-                
+                Toast.makeText(getApplicationContext(), new String(readBuf), Toast.LENGTH_SHORT).show();                
                 break;
                 
             case GFORCE_X:
@@ -278,10 +274,10 @@ public class MainActivity extends Activity {
                 
                 GForceViewer gforce = (GForceViewer) findViewById(R.id.gForceViewer1);
                
-                //SeekBar sb = (SeekBar) findViewById(R.id.seekBar1);
                 try{                	
-                	  gforce.setGForce(Integer.parseInt(x), null);
-                }catch (Exception e) {					
+                	gforce.setGForce(Integer.parseInt(x), null);                	  
+                }catch (Exception e) {
+                	e.printStackTrace();
 				}
                 break;
             case TURBO:
@@ -293,8 +289,7 @@ public class MainActivity extends Activity {
                 	t.setHandTarget( (Float.parseFloat(turbo)/10) );                
                 }catch (Exception e) {
                 	Log.e("tag", "nao deu");
-				}
-                System.out.println(turbo);
+				}                
                 break;
                 
             case LAMBDA:
@@ -321,13 +316,11 @@ public class MainActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "Conectado com "
                 		+ mConnectedDeviceName, Toast.LENGTH_SHORT).show();
                 
-                NotificationManager nm = ( NotificationManager ) getSystemService( NOTIFICATION_SERVICE );
-                Notification notif = new Notification();
-                notif.ledARGB = 0xFFff0000;
-                notif.flags = Notification.FLAG_SHOW_LIGHTS;
-//                notif.ledOnMS = 100; 
-//                notif.ledOffMS = 100; 
-                nm.notify(LED_NOTIFICATION_ID, notif);
+                //NotificationManager nm = ( NotificationManager ) getSystemService( NOTIFICATION_SERVICE );
+                //Notification notif = new Notification();
+                //notif.ledARGB = 0xFFff0000;
+                //notif.flags = Notification.FLAG_SHOW_LIGHTS; 
+                //nm.notify(LED_NOTIFICATION_ID, notif);
                 
                 break;
                 

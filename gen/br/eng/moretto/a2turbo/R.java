@@ -40,17 +40,18 @@ public final class R {
         public static final int SeekBar11=0x7f060020;
         public static final int SeekBar12=0x7f060021;
         public static final int button_scan=0x7f060006;
-        public static final int connect=0x7f060027;
-        public static final int fuelmap=0x7f060028;
-        public static final int gForceViewer1=0x7f060023;
+        public static final int connect=0x7f060028;
+        public static final int fuelmap=0x7f060029;
+        public static final int gForceViewer1=0x7f060024;
         public static final int lambdaViewer1=0x7f060022;
         public static final int lambdaViewerFuel=0x7f060007;
         public static final int linearLayout1=0x7f060015;
         public static final int linearLayout2=0x7f060008;
         public static final int new_devices=0x7f060005;
         public static final int paired_devices=0x7f060003;
-        public static final int saveMap=0x7f060025;
-        public static final int sendMap=0x7f060026;
+        public static final int rpmgauge=0x7f060025;
+        public static final int saveMap=0x7f060026;
+        public static final int sendMap=0x7f060027;
         public static final int textView01=0x7f060009;
         public static final int textView02=0x7f06000a;
         public static final int textView03=0x7f06000b;
@@ -67,7 +68,7 @@ public final class R {
         public static final int title_new_devices=0x7f060004;
         public static final int title_paired_devices=0x7f060002;
         public static final int title_right_text=0x7f060001;
-        public static final int turbogauge=0x7f060024;
+        public static final int turbogauge=0x7f060023;
     }
     public static final class layout {
         public static final int custom_title=0x7f030000;

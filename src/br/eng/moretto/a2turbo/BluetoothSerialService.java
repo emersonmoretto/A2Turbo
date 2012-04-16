@@ -381,7 +381,7 @@ public class BluetoothSerialService {
                     	
                     	//close and send package 
                     	if(openPack && buffer[i] == 62){
-                    		Log.e(TAG, "Fechou pack type "+ (char) packType +  " code + "+packType);
+                    		//Log.e(TAG, "Fechou pack type "+ (char) packType +  " code + "+packType);
                     		
                     		switch(packType){
                     		
