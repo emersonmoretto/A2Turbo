@@ -64,7 +64,7 @@ public final class RPMGauge extends View {
 	private static final float degreesPerNick = 360.0f / totalNicks;	
 	private static final float centerDegree = 0.7f; // the one in the top center (12 o'clock)
 	private static final float minDegrees = 0;
-	private static final float maxDegrees = 14f;
+	private static final float maxDegrees = 1.4f;
 	
 	// hand dynamics -- all are angular expressed in F degrees
 	private boolean handInitialized = false;
@@ -146,7 +146,7 @@ public final class RPMGauge extends View {
 		pressurePaint.setAntiAlias(true);
 		pressurePaint.setTypeface(Typeface.DEFAULT_BOLD);
 		pressurePaint.setTextAlign(Paint.Align.CENTER);
-		pressurePaint.setTextSize(0.17f);
+		pressurePaint.setTextSize(0.13f);
 		pressurePaint.setTextScaleX(1f);
 		pressurePaint.setColor(0xafDD0000);
 		
@@ -431,7 +431,7 @@ public final class RPMGauge extends View {
 			canvas.restore();
 			
 			canvas.drawRect(0.35f, 0.81f, 0.65f, 0.90f, facePaint);
-			canvas.drawText( (int) (handTarget*1000)/2+"", 0.5f, 0.91f, pressurePaint);
+			canvas.drawText( (int) (handTarget*10000)/2+"", 0.5f, 0.91f, pressurePaint);
 			
 			canvas.drawCircle(0.5f, 0.5f, 0.01f, handScrewPaint);
 		}
@@ -524,6 +524,7 @@ public final class RPMGauge extends View {
 	}
 	
 	public void setHandTarget(float pressure) {
+		
 		if (pressure < minDegrees) {
 			pressure = minDegrees;
 		} else if (pressure > maxDegrees) {

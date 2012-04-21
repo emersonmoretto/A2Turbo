@@ -387,20 +387,23 @@ public class BluetoothSerialService {
                     		
 	                    		case 120:
 	                    			mHandler.obtainMessage(MainActivity.GFORCE_X, bytes, -1, pack).sendToTarget();
-	                    			Log.e(TAG, "Enviou "+pack);
+	                    			//Log.e(TAG, "Enviou "+pack);
 	                    			break;
 	                    		case 121:
 	                    			mHandler.obtainMessage(MainActivity.GFORCE_Y, bytes, -1, pack).sendToTarget();
 	                    			break;
-	                    		case 108:
+	                    		case MainActivity.LAMBDA:
 	                    			mHandler.obtainMessage(MainActivity.LAMBDA, bytes, -1, pack).sendToTarget();
 	                    			if(mHandlerFuel != null){
 	                    				mHandlerFuel.obtainMessage(MainActivity.LAMBDA, bytes, -1, pack).sendToTarget();
 	                    			}
 	                    			break;
-	                    		case 116:
+	                    		case MainActivity.TURBO:
 	                    			mHandler.obtainMessage(MainActivity.TURBO, bytes, -1, pack).sendToTarget();
-	                    			break;	
+	                    			break;
+	                    		case MainActivity.RPM:
+	                    			mHandler.obtainMessage(MainActivity.RPM, bytes, -1, pack).sendToTarget();
+	                    			break;
 	                    		default:
 	                    			mHandler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, pack).sendToTarget();
 	                    		}

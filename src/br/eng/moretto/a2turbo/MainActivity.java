@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
     public static final int GFORCE_Y = 121;
     public static final int LAMBDA = 108;
     public static final int TURBO = 116;
+    public static final int RPM = 114;
     
     // Key names received from the BluetoothChatService Handler
     public static final String DEVICE_NAME = "device_name";
@@ -287,6 +288,19 @@ public class MainActivity extends Activity {
                 
                 try{
                 	t.setHandTarget( (Float.parseFloat(turbo)/10) );                
+                }catch (Exception e) {
+                	Log.e("tag", "nao deu");
+				}                
+                break;
+                
+            case RPM:
+                String rpm = (String) msg.obj;              
+                
+                RPMGauge rpmGauge = (RPMGauge) findViewById(R.id.rpmgauge);               
+                
+                try{
+                	System.out.println( ((Float.parseFloat(rpm)/100)) + " rpm");
+                	rpmGauge.setHandTarget( (Float.parseFloat(rpm)/100) );                
                 }catch (Exception e) {
                 	Log.e("tag", "nao deu");
 				}                
