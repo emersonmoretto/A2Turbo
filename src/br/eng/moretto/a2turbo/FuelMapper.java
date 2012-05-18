@@ -19,7 +19,6 @@ public class FuelMapper extends Activity {
 	
 	private static final String PREFS_NAME = "FuelMap";
 
-
 	/**
 	 * @see android.app.Activity#onCreate(Bundle)
 	 */
@@ -39,21 +38,36 @@ public class FuelMapper extends Activity {
 			
 		// Restore preferences
 	    SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-	    String mapa = settings.getString("mapa", "empty");
+	    String mapa = settings.getString("mapa1", "empty");
+	    String mapa2 = settings.getString("mapa2", "empty");
 	    
 	    if(mapa.equals("empty")){
-			 ((VerticalSeekBar) findViewById(R.id.SeekBar01)).setProgress(90);
-			 ((VerticalSeekBar) findViewById(R.id.SeekBar02)).setProgress(90);
-			 ((VerticalSeekBar) findViewById(R.id.SeekBar03)).setProgress(80);
-			 ((VerticalSeekBar) findViewById(R.id.SeekBar04)).setProgress(70);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar01)).setProgress(80);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar02)).setProgress(80);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar03)).setProgress(70);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar04)).setProgress(60);
 			 ((VerticalSeekBar) findViewById(R.id.SeekBar05)).setProgress(60);
-			 ((VerticalSeekBar) findViewById(R.id.SeekBar06)).setProgress(60);
-			 ((VerticalSeekBar) findViewById(R.id.SeekBar07)).setProgress(50);
-			 ((VerticalSeekBar) findViewById(R.id.SeekBar08)).setProgress(40);
-			 ((VerticalSeekBar) findViewById(R.id.SeekBar09)).setProgress(30);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar06)).setProgress(50);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar07)).setProgress(30);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar08)).setProgress(20);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar09)).setProgress(10);
 			 ((VerticalSeekBar) findViewById(R.id.SeekBar10)).setProgress(0);
 			 ((VerticalSeekBar) findViewById(R.id.SeekBar11)).setProgress(0);
 			 ((VerticalSeekBar) findViewById(R.id.SeekBar12)).setProgress(0);
+			 
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar201)).setProgress(50);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar202)).setProgress(50);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar203)).setProgress(40);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar204)).setProgress(40);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar205)).setProgress(30);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar206)).setProgress(20);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar207)).setProgress(10);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar208)).setProgress(0);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar209)).setProgress(0);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar210)).setProgress(0);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar211)).setProgress(0);
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar212)).setProgress(0);
+			 
 	    }else{
 	    	 String[] split = mapa.split(",");
 	    	 ((VerticalSeekBar) findViewById(R.id.SeekBar01)).setProgress(Integer.parseInt(split[0]));
@@ -68,24 +82,22 @@ public class FuelMapper extends Activity {
 			 ((VerticalSeekBar) findViewById(R.id.SeekBar10)).setProgress(Integer.parseInt(split[9]));
 			 ((VerticalSeekBar) findViewById(R.id.SeekBar11)).setProgress(Integer.parseInt(split[10]));
 			 ((VerticalSeekBar) findViewById(R.id.SeekBar12)).setProgress(Integer.parseInt(split[11]));
+			 
+		   	 String[] split2 = mapa2.split(",");
+	    	 ((VerticalSeekBar) findViewById(R.id.SeekBar201)).setProgress(Integer.parseInt(split2[0]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar202)).setProgress(Integer.parseInt(split2[1]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar203)).setProgress(Integer.parseInt(split2[2]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar204)).setProgress(Integer.parseInt(split2[3]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar205)).setProgress(Integer.parseInt(split2[4]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar206)).setProgress(Integer.parseInt(split2[5]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar207)).setProgress(Integer.parseInt(split2[6]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar208)).setProgress(Integer.parseInt(split2[7]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar209)).setProgress(Integer.parseInt(split2[8]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar210)).setProgress(Integer.parseInt(split2[9]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar211)).setProgress(Integer.parseInt(split2[10]));
+			 ((VerticalSeekBar) findViewById(R.id.SeekBar212)).setProgress(Integer.parseInt(split2[11]));
 	    }
-		 
-		 //((TextView) findViewById(R.id.textView01)).setText(vSeekBar01.getProgress());
-		 		 
-		 //TODO  fazer os seekbar andar de 10 em 10
-		 //vSeekBar.setMax(100);
-		 /*
-		 Rect bounds = new Rect();
-		 
-		 vSeekBar.getHitRect(bounds);
-	     bounds.right += 50;
-	     TouchDelegate touchDelegate = new TouchDelegate(bounds, vSeekBar);
 	 
-	     if (View.class.isInstance(vSeekBar.getParent())) {	     
-	    	 ((View) vSeekBar.getParent()).setTouchDelegate(touchDelegate);
-	     }
-	     */	     	        
-		 //vSeekBar.setTouchDelegate(delegate)	 
 	}
 	
 	 @Override
@@ -112,6 +124,20 @@ public class FuelMapper extends Activity {
         	mapa = mapa + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar11)).getProgress();
         	mapa = mapa + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar12)).getProgress() + ","; // end delimiter
         	
+        	String mapa2 = "";        	
+        	mapa2 = ""+((VerticalSeekBar) findViewById(R.id.SeekBar201)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar202)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar203)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar204)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar205)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar206)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar207)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar208)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar209)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar210)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar211)).getProgress();
+        	mapa2 = mapa2 + "," + ((VerticalSeekBar) findViewById(R.id.SeekBar212)).getProgress() + ","; // end delimiter
+        	
         	// We need an Editor object to make preference changes.
             // All objects are from android.context.Context            
         	SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -121,22 +147,25 @@ public class FuelMapper extends Activity {
 	            
 	        case R.id.saveMap:
 	        	
-	            editor.putString("mapa", mapa);
+	            editor.putString("mapa1", mapa);
+	            editor.putString("mapa2", mapa);
 	            // Commit the edits!
 	            editor.commit();
 	            
-	            Toast.makeText(getApplicationContext(), "Mapa salvo!", Toast.LENGTH_SHORT).show();
-	            
+	            Toast.makeText(getApplicationContext(), "Mapa salvo!", Toast.LENGTH_SHORT).show();	            
 	        	break;
+	        	
 	        case R.id.sendMap:
-	        	System.out.println("enviando mapa");
+	        	System.out.println("enviando mapas");
 	        	System.out.println(mapa);
 	        	
-	            editor.putString("mapa", mapa);
+	            editor.putString("mapa1", mapa);
+	            editor.putString("mapa2", mapa);
 	            // Commit the edits!
 	            editor.commit();	            
 	            
 	        	MainApplication.get().getSerialService().write(("m"+mapa).getBytes());
+	        	MainApplication.get().getSerialService().write(("n"+mapa).getBytes());
 	        	
 	        	Toast.makeText(getApplicationContext(), "Mapa enviado!", Toast.LENGTH_SHORT).show();
 	        	
