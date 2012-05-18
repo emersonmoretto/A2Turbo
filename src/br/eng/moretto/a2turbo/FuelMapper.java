@@ -148,7 +148,7 @@ public class FuelMapper extends Activity {
 	        case R.id.saveMap:
 	        	
 	            editor.putString("mapa1", mapa);
-	            editor.putString("mapa2", mapa);
+	            editor.putString("mapa2", mapa2);
 	            // Commit the edits!
 	            editor.commit();
 	            
@@ -160,12 +160,13 @@ public class FuelMapper extends Activity {
 	        	System.out.println(mapa);
 	        	
 	            editor.putString("mapa1", mapa);
-	            editor.putString("mapa2", mapa);
+	            editor.putString("mapa2", mapa2);
 	            // Commit the edits!
 	            editor.commit();	            
 	            
 	        	MainApplication.get().getSerialService().write(("m"+mapa).getBytes());
-	        	MainApplication.get().getSerialService().write(("n"+mapa).getBytes());
+	        	try { Thread.sleep(1000); } catch (InterruptedException e) {}
+	        	MainApplication.get().getSerialService().write(("n"+mapa2).getBytes());
 	        	
 	        	Toast.makeText(getApplicationContext(), "Mapa enviado!", Toast.LENGTH_SHORT).show();
 	        	
