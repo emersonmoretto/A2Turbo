@@ -5,131 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"    
     android:gravity="center">
-        
-<br.eng.moretto.a2turbo.view.HallmeterViewer
-    android:id="@+id/lambdaViewerFuel"
-    android:layout_marginLeft="10dp"
-    android:layout_width="420dp"
-    android:layout_height="60dp" />
-
-<LinearLayout
-    android:id="@+id/linearLayout2"
-    android:layout_width="wrap_content"
-    android:layout_height="25dp"
-    android:orientation="horizontal" >
-
     
-<TextView
-    android:id="@+id/textView01"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"
-    android:layout_marginLeft="17dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-            
-<TextView
-    android:id="@+id/textView02"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"    
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-
-<TextView
-    android:id="@+id/textView03"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-            
-<TextView
-    android:id="@+id/textView04"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"    
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-
-<TextView
-    android:id="@+id/textView05"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-            
-<TextView
-    android:id="@+id/textView06"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"    
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-
-<TextView
-    android:id="@+id/textView07"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-            
-<TextView
-    android:id="@+id/textView08"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"    
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-
-<TextView
-    android:id="@+id/textView09"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-            
-<TextView
-    android:id="@+id/textView10"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"    
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-
-<TextView
-    android:id="@+id/textView11"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-            
-<TextView
-    android:id="@+id/textView12"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"    
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="11dp"
-    android:text="00" />
-
- 
-
-</LinearLayout>
+<br.eng.moretto.a2turbo.view.HallmeterViewer android:id="@+id/lambdaViewerFuel" android:layout_height="50dp" android:layout_marginTop="5dp" android:layout_width="420dp" android:layout_marginLeft="30dp"></br.eng.moretto.a2turbo.view.HallmeterViewer>
 
 
+<HorizontalScrollView android:id="@+id/horizontalScrollView1" android:layout_marginTop="10dp" android:layout_width="wrap_content" android:layout_height="220dp">
+    
+<LinearLayout
+    android:id="@+id/linearLayout4"
+    android:layout_width="1000dip"
+	android:layout_height="180dip"    
+    android:orientation="horizontal" >
+    
 <LinearLayout
     android:id="@+id/linearLayout1"
-    android:layout_width="wrap_content"
+    android:layout_width="470dip"
     android:layout_height="match_parent"
     android:orientation="horizontal" >
-
+    
+    
+    <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/mapa1" android:id="@+id/imageView1"></ImageView>
+	
     
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
         android:id="@+id/SeekBar01"
-        android:layout_width="26dip"
+        android:layout_width="23dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:layout_marginLeft="10dp"
@@ -138,6 +38,128 @@
     
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
         android:id="@+id/SeekBar02"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar03"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar04"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+		android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar05"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar06"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar07"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar08"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar09"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar10"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar11"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar12"
+        android:layout_width="23dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+</LinearLayout>
+
+
+
+
+<LinearLayout
+    android:id="@+id/linearLayout2"
+    android:layout_width="510dip"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:orientation="horizontal" >
+
+    <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" android:src="@drawable/mapa2" android:id="@+id/imageView2"></ImageView>
+
+    
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar201"
+        android:layout_width="26dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:progressDrawable="@drawable/progress_vertical"
+        android:thumb="@drawable/seek_thumb" />
+    
+    <br.eng.moretto.a2turbo.view.VerticalSeekBar
+        android:id="@+id/SeekBar202"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -148,7 +170,7 @@
   
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar03"
+        android:id="@+id/SeekBar203"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -157,7 +179,7 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar04"
+        android:id="@+id/SeekBar204"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -166,7 +188,7 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar05"
+        android:id="@+id/SeekBar205"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -175,7 +197,7 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar06"
+        android:id="@+id/SeekBar206"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -184,7 +206,7 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar07"
+        android:id="@+id/SeekBar207"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -193,7 +215,7 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar08"
+        android:id="@+id/SeekBar208"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -202,7 +224,7 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar09"
+        android:id="@+id/SeekBar209"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -211,7 +233,7 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar10"
+        android:id="@+id/SeekBar210"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -220,7 +242,7 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar11"
+        android:id="@+id/SeekBar211"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
@@ -229,13 +251,21 @@
         android:thumb="@drawable/seek_thumb" />
 
     <br.eng.moretto.a2turbo.view.VerticalSeekBar
-        android:id="@+id/SeekBar12"
+        android:id="@+id/SeekBar212"
         android:layout_width="26dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="50dp"
         android:progressDrawable="@drawable/progress_vertical"
         android:thumb="@drawable/seek_thumb" />
+        
 </LinearLayout>
+</LinearLayout>
+    
+    
+</HorizontalScrollView>
+
+
     
 </LinearLayout>
