@@ -14,13 +14,15 @@
      limitations under the License.
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/connect"
-          android:icon="@android:drawable/ic_menu_search"
-          android:title="@string/connect" />
-          
-	  <item android:id="@+id/fuelmap"
-	        android:icon="@android:drawable/ic_menu_edit"
-	        android:title="@string/fuelmap" />
+    
+    <item android:id="@+id/saveMap"
+          android:icon="@android:drawable/ic_menu_save"
+          android:title="Salvar mapa" />
+    
+    <item android:id="@+id/sendMap"
+          android:icon="@android:drawable/ic_menu_share"
+          android:title="Enviar mapa" />          
+	  
 </menu>
 
 

@@ -46,7 +46,12 @@ public class BluetoothSerialService {
     // Member fields
     private final BluetoothAdapter mAdapter;
     private final Handler mHandler;
-    private ConnectThread mConnectThread;
+    private Handler mHandlerFuel;
+    public void setmHandlerFuel(Handler mHandlerFuel) {
+		this.mHandlerFuel = mHandlerFuel;
+	}
+
+	private ConnectThread mConnectThread;
     private ConnectedThread mConnectedThread;
     private int mState;
     
@@ -67,6 +72,7 @@ public class BluetoothSerialService {
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         mState = STATE_NONE;
         mHandler = handler;
+        mHandlerFuel = null;
        // mEmulatorView = emulatorView;
     }
 
@@ -375,23 +381,29 @@ public class BluetoothSerialService {
                     	
                     	//close and send package 
                     	if(openPack && buffer[i] == 62){
-                    		Log.e(TAG, "Fechou pack type "+ (char) packType +  " code + "+packType);
+                    		//Log.e(TAG, "Fechou pack type "+ (char) packType +  " code + "+packType);
                     		
                     		switch(packType){
                     		
 	                    		case 120:
 	                    			mHandler.obtainMessage(MainActivity.GFORCE_X, bytes, -1, pack).sendToTarget();
-	                    			Log.e(TAG, "Enviou "+pack);
+	                    			//Log.e(TAG, "Enviou "+pack);
 	                    			break;
 	                    		case 121:
 	                    			mHandler.obtainMessage(MainActivity.GFORCE_Y, bytes, -1, pack).sendToTarget();
 	                    			break;
-	                    		case 108:
+	                    		case MainActivity.LAMBDA:
 	                    			mHandler.obtainMessage(MainActivity.LAMBDA, bytes, -1, pack).sendToTarget();
+	                    			if(mHandlerFuel != null){
+	                    				mHandlerFuel.obtainMessage(MainActivity.LAMBDA, bytes, -1, pack).sendToTarget();
+	                    			}
 	                    			break;
-	                    		case 116:
+	                    		case MainActivity.TURBO:
 	                    			mHandler.obtainMessage(MainActivity.TURBO, bytes, -1, pack).sendToTarget();
-	                    			break;	
+	                    			break;
+	                    		case MainActivity.RPM:
+	                    			mHandler.obtainMessage(MainActivity.RPM, bytes, -1, pack).sendToTarget();
+	                    			break;
 	                    		default:
 	                    			mHandler.obtainMessage(MainActivity.MESSAGE_READ, bytes, -1, pack).sendToTarget();
 	                    		}

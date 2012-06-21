@@ -15,7 +15,7 @@
         </activity>
         <activity android:label="@string/select_device"
             android:name="br.eng.moretto.a2turbo.DeviceListActivity" android:theme="@android:style/Theme.Dialog"/>
-        <activity android:name=".FuelMapper"/>
+        <activity android:name=".FuelMapper" android:screenOrientation="landscape"/>
     </application>
     <uses-sdk android:minSdkVersion="8"/>
 </manifest>

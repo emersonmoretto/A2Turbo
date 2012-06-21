@@ -9,24 +9,27 @@
   <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
-  android:layout_width="500px"
+  android:layout_width="600dp"
   android:layout_height="fill_parent">
   
-  <br.eng.moretto.a2turbo.view.HallmeterViewer android:id="@+id/lambdaViewer1" android:layout_width="500px" android:layout_height="80px"></br.eng.moretto.a2turbo.view.HallmeterViewer>
+  <br.eng.moretto.a2turbo.view.HallmeterViewer android:id="@+id/lambdaViewer1" android:layout_marginLeft="80dp" android:layout_width="500dp" android:layout_height="80dp"></br.eng.moretto.a2turbo.view.HallmeterViewer>
  
-  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_marginLeft="60px" android:orientation="vertical">
-      <br.eng.moretto.a2turbo.view.GForceViewer android:layout_width="320px" android:id="@+id/gForceViewer1" android:layout_height="320px"></br.eng.moretto.a2turbo.view.GForceViewer>
-  </LinearLayout>
- 
-
-</LinearLayout>
-  
-
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_marginTop="30px" android:orientation="vertical"> 	
- <br.eng.moretto.a2turbo.TurboGauge
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_marginLeft="0px" android:orientation="horizontal">
+      
+   	<br.eng.moretto.a2turbo.TurboGauge
     android:id="@+id/turbogauge"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content" />
+    android:layout_width="190dp"
+    android:layout_height="190dp" />      
+    
+    <br.eng.moretto.a2turbo.view.GForceViewer android:layout_width="190dp" android:id="@+id/gForceViewer1" android:layout_height="220dp"></br.eng.moretto.a2turbo.view.GForceViewer>
+        
+    <br.eng.moretto.a2turbo.RPMGauge
+    android:id="@+id/rpmgauge"
+    android:layout_width="190dp"
+    android:layout_height="190dp" />
+     
+  </LinearLayout>
+
 </LinearLayout>
     
 </LinearLayout>

@@ -60,12 +60,12 @@ public class GForceViewer extends View {
 		
 		super.onDraw(canvas);	
 		
-		int x1g = 65;
-		int y1g = 65;
-		int x2g = 130;
-		int y2g = 130;
-		int cx = 160;
-		int cy = 160;
+		int x1g = 55;
+		int y1g = 55;
+		int x2g = 110;
+		int y2g = 110;
+		int cx = 150;
+		int cy = 150;
 		int size = 20;
 		int nx = 0;
 		int ny = 0;
@@ -105,7 +105,7 @@ public class GForceViewer extends View {
 		canvas.drawLine(cx+x2g-size, cy+x2g, cx+x2g, cy+x2g, rimPaint); //x
 		canvas.drawLine(cx+y2g, cy+y2g, cx+y2g, cy+y2g-size, rimPaint); //y
 		
-		canvas.drawText("2G", 298-30, 308, rimPaint);
+		canvas.drawText("2G", 298-40, 308, rimPaint);
 		
 		//target
 		//x-=250;//zero gap (0-250)
